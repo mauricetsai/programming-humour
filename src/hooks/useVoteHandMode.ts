@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react'
 export type VoteHandMode = 'left' | 'right'
 
 const STORAGE_KEY = 'programming-humour:vote-hand'
-/** Same-tab sync when the toggle is used in the header while the home page is mounted. */
+// Fired when you move the vote buttons in the header — home listens and updates.
 const CHANGE_EVENT = 'programming-humour:vote-hand-change'
 
 function readStored(): VoteHandMode {
@@ -27,7 +27,7 @@ export function useVoteHandMode() {
     try {
       window.localStorage.setItem(STORAGE_KEY, next)
     } catch {
-      /* ignore */
+      // private mode / blocked storage — whatever
     }
     window.dispatchEvent(new Event(CHANGE_EVENT))
   }, [])

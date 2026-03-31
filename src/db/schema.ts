@@ -10,7 +10,7 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core'
 
-/** better-auth: Drizzle adapter expects these model names. */
+// Names line up with better-auth's default Drizzle schema.
 export const user = pgTable('user', {
   id: text('id').primaryKey(),
   name: text('name').notNull(),
@@ -113,8 +113,7 @@ export const jokeVotes = pgTable(
     userId: text('user_id')
       .notNull()
       .references(() => user.id, { onDelete: 'cascade' }),
-    /** +1 upvote, −1 downvote — at most one row per (joke, user) */
-    value: integer('value').notNull(),
+    value: integer('value').notNull(), // +1 / -1, one row per user+joke
   },
   (table) => [
     index('joke_votes_jokeId_idx').on(table.jokeId),

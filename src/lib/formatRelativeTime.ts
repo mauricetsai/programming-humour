@@ -1,4 +1,4 @@
-/** Client-safe relative time for joke timestamps (loader serializes dates as ISO strings). */
+// "5 min ago" etc.; loaders pass ISO strings.
 export function formatRelativeTime(iso: string | Date): string {
   const date = typeof iso === 'string' ? new Date(iso) : iso
   if (Number.isNaN(date.getTime())) return ''

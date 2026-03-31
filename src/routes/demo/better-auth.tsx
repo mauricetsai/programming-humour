@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 import { requestOpenAuthModal } from '#/lib/auth-modal'
 
-/** Legacy route: open the header sign-in modal and return home. */
+// Old TanStack demo URL - bounce to / and pop the sign-in modal.
 export const Route = createFileRoute('/demo/better-auth')({
   component: BetterAuthRedirect,
 })

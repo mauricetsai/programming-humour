@@ -77,7 +77,7 @@ export function SignInModal({ open, onClose }: SignInModalProps) {
     }
   }
 
-  /** Portals to `document.body` so `position: fixed` is viewport-relative (header `backdrop-filter` would otherwise shrink the containing block). */
+  // Mount on document.body so the backdrop isn't stuck inside the header stacking context.
   return createPortal(
     <div
       className="fixed inset-0 z-[100] flex min-h-[100dvh] items-center justify-center p-4 sm:p-6"

@@ -14,8 +14,7 @@ export type JokeRow = {
   authorName: string
   createdAt: Date
   score: number
-  /** Signed-in viewer's vote on this joke, if any. */
-  myVote: 1 | -1 | null
+  myVote: 1 | -1 | null // my vote (null = guest or didn't vote)
 }
 
 export const listJokes = createServerFn({ method: 'GET' }).handler(
@@ -45,7 +44,7 @@ export const listJokes = createServerFn({ method: 'GET' }).handler(
 
     const sorted = [...rows].sort((a, b) => {
       if (b.score !== a.score) return b.score - a.score
-      // Tie-break when scores match: lower id first (older joke ranks above newer).
+      // same score -> sort by id so the list doesn't jump around
       return a.id - b.id
     })
 
@@ -149,10 +148,10 @@ export const voteJoke = createServerFn({ method: 'POST' })
         value,
       })
     } else if (existing.value === value) {
-      // Same button again → remove vote ("no vote").
+      // same vote again = undo
       await db.delete(jokeVotes).where(eq(jokeVotes.id, existing.id))
     } else {
-      // Switch up ↔ down (still one row per user per joke).
+      // opposite button = flip the vote
       await db
         .update(jokeVotes)
         .set({ value })

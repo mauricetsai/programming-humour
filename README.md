@@ -80,7 +80,3 @@ Open [http://localhost:3000](http://localhost:3000) (port is set in `package.jso
 - **Styling:** Tailwind CSS v4  
 - **Auth:** better-auth (Drizzle adapter)  
 - **Database:** PostgreSQL, Drizzle ORM  
-
-## License
-
-Private course / personal project unless you add a public license.

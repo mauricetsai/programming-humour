@@ -1,4 +1,4 @@
-/** Open the header sign-in dialog from anywhere (e.g. add-joke access denied). */
+// Tiny event bus so other routes can tell the header to show sign-in.
 export const OPEN_AUTH_MODAL_EVENT = 'programming-humour:open-auth-modal'
 
 export function requestOpenAuthModal() {

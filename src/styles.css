@@ -6,7 +6,7 @@
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Among Us–inspired: cyan / lime crewmates, panel grays, light skeld deck */
+/* light theme - cyan / lime / purple */
 :root {
   --sea-ink: #1e2640;
   --sea-ink-soft: #4a5578;
@@ -29,7 +29,7 @@
   --hero-b: rgba(107, 91, 149, 0.18);
 }
 
-/* Dark: Skeld-style hull + HUD cyan / lime */
+/* dark */
 :root[data-theme="dark"] {
   --sea-ink: #e4e9f2;
   --sea-ink-soft: #98a3ba;
